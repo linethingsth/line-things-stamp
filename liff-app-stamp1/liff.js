@@ -59,6 +59,9 @@ function uiToggleStateButton(pressed) {
     if (pressed) {
         el.classList.add("pressed");
         el.innerText = "Pressed";
+        
+        // redirect to bcrm questionaire
+        window.location.replace("https://bcrm-i.line.me/wl/1576551959/q/314");
     } else {
         el.classList.remove("pressed");
         el.innerText = "Released";
