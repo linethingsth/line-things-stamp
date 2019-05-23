@@ -80,7 +80,7 @@ function uiToggleDeviceConnected(connected) {
         // Show status connected
         elStatus.classList.remove("inactive");
         elStatus.classList.add("success");
-        elStatus.innerText = "Device connected.\nPlease press the button 1";
+        elStatus.innerText = "Device connected.\nPlease press button 1";
         // Show controls
         elControls.classList.remove("hidden");
     } else {
