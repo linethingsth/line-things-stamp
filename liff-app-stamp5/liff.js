@@ -1,5 +1,5 @@
 // User service UUID: Change this to your generated service UUID
-const USER_SERVICE_UUID         = '91E4E176-D0B9-464D-9FE4-52EE3E9F1552'; // LED, Button
+const USER_SERVICE_UUID         = '52797548-0942-452e-8bad-9b44c5461c1a'; // LED, Button
 // User service characteristics
 const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
 const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
@@ -49,8 +49,8 @@ function uiToggleLedButton(state) {
 function uiCountPressButton() {
     clickCount++;
 
-    const el = document.getElementById("click-count");
-    el.innerText = clickCount;
+    //const el = document.getElementById("click-count");
+    //el.innerText = clickCount;
 }
 
 function uiToggleStateButton(pressed) {
@@ -59,6 +59,9 @@ function uiToggleStateButton(pressed) {
     if (pressed) {
         el.classList.add("pressed");
         el.innerText = "Pressed";
+        
+        // redirect to bcrm questionaire
+        window.location.replace("https://bcrm-i.line.me/wl/1576551959/q/315");
     } else {
         el.classList.remove("pressed");
         el.innerText = "Released";
@@ -77,7 +80,7 @@ function uiToggleDeviceConnected(connected) {
         // Show status connected
         elStatus.classList.remove("inactive");
         elStatus.classList.add("success");
-        elStatus.innerText = "Device connected";
+        elStatus.innerText = "Device connected.\nPlease press button 5";
         // Show controls
         elControls.classList.remove("hidden");
     } else {
@@ -165,8 +168,8 @@ function liffRequestDevice() {
 
 function liffConnectToDevice(device) {
     device.gatt.connect().then(() => {
-        document.getElementById("device-name").innerText = device.name;
-        document.getElementById("device-id").innerText = device.id;
+        //document.getElementById("device-name").innerText = device.name;
+        //document.getElementById("device-id").innerText = device.id;
 
         // Show status connected
         uiToggleDeviceConnected(true);
@@ -234,7 +237,7 @@ function liffGetPSDIService(service) {
         // Byte array to hex string
         const psdi = new Uint8Array(value.buffer)
             .reduce((output, byte) => output + ("0" + byte.toString(16)).slice(-2), "");
-        document.getElementById("device-psdi").innerText = psdi;
+        //document.getElementById("device-psdi").innerText = psdi;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
